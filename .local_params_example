@@ -1,0 +1,10 @@
+{
+    "EMAIL_HOST": "smtp.gmail.com",
+    "EMAIL_USER": "",
+    "EMAIL_PASS": "",
+    "SECRET_KEY": "",
+    "RABBITMQ_USER": "",
+    "RABBITMQ_PASS": "",
+    "LOCAL_PORT": "127.0.0.1:8080",
+    "PRODUCTION": "no"
+}
