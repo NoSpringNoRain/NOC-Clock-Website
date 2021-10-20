@@ -12,7 +12,7 @@
     {% csrf_token %}
         <h1 align="center">Job submission</h1>
         <hr>
-        <h4 align="center">Add two numbers together</h4>
+        <h4 align="center">Enter information to start prediction</h4>
         <br>
 
         {# Job name #}
@@ -40,11 +40,11 @@
                 <div style="display: flex; justify-content: center; align-items: center">
                     <div class="form-group {% if form.term1.errors %}has-error has-feedback{% endif %}"
                          style="text-align: center;">
-                            <label for="id_term1" style="font-weight: normal;">{{ form.term1.label }}</label>
+                            <label for="id_education_level" style="font-weight: normal;">{{ form.education_level.label }}</label>
                             <input type="text"
                                    class="form-control center-text"
                                    style="margin:auto; height:40px;"
-                                   name="term1" id="id_term1" placeholder=2 maxlength="10000" required>
+                                   name="education_level" id="id_education_level" placeholder=2 maxlength="10000" required>
                             {% if form.term1.errors %}
                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                             {% endif %}
@@ -79,6 +79,10 @@
                     <input type="checkbox" id="id_noncommercial" class="ios8-switch ios8-switch-lg" required>
                     <label for='id_noncommercial' style="font-weight: normal; line-height: 20px;">
                         I will use {{ SERVER_NAME }} for non-commercial purposes only
+                    </label>
+                    <input type="checkbox" id="id_agreedatastorage" class="ios8-switch ios8-switch-lg" required>
+                    <label for='id_agreedatastorage' style="font-weight: normal; line-height: 20px;">
+                        I agree {{ SERVER_NAME }} to store my submitted data for further academic research
                     </label>
                 </div>
             </div>

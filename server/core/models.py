@@ -47,6 +47,7 @@ def submit_job(self, job_id):
             logger.info(f'Running {job.status}')
             sleep(10)
 
+            # TODO: get the prediction, assign to job.result and save()
             result = job.term1 + job.term2
             outdir = job.get_output_dir()
             outdir.mkdir_p()
@@ -97,7 +98,10 @@ class Job(models.Model):
     celery_id = models.CharField(max_length=200, blank=True)
 
     status = models.CharField(max_length=5, choices=STATUS_CHOICES, default='L.STR')
+    # TODO: convert image into CharField?
     details_json = models.CharField(max_length=1000, blank=True)
+    # TODO: Add result item in Model and save the prediction result to this item
+    # result = models.IntegerField()
 
     _temp_dir = ''
 
