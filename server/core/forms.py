@@ -73,16 +73,15 @@ class JobSubmitForm(forms.Form):
         ('3', 'Not Sure')
     )
     diagnosis_history = forms.ChoiceField(widget=forms.Select, choices=DIAG_CHOICES,
-                                       label='Does your candidate have ever been diagnosed with a'
-                                             'specific memory problem?',
-                                       blank=True)
+                                          label='Does your candidate have ever been diagnosed with a'
+                                                'specific memory problem?',
+                                          blank=True)
 
-    height = forms.FloatField(label='Candidate Height',
-                              help_text='Enter your candidate\' height',
-                              validators=[validate])
+    height = forms.CharField(label='Candidate Height (ft/inches)',
+                             help_text='Enter your candidate\' height, e.g. 5\'5\'\'')
 
-    weight = forms.FloatField(label='Candidate Weight',
-                              help_text='Enter your candidate\' weight',
+    weight = forms.FloatField(label='Candidate Weight (pounds)',
+                              help_text='Enter your candidate\' weight, e.g. 150',
                               validators=[validate])
 
     EXE_CHOICES = (
@@ -102,8 +101,8 @@ class JobSubmitForm(forms.Form):
         ('4', 'Daily')
     )
     alcohol_frequency = forms.ChoiceField(widget=forms.Select, choices=ALC_CHOICES,
-                                           label='How often does your candidate drink alcoholic beverages?',
-                                           blank=True)
+                                          label='How often does your candidate drink alcoholic beverages?',
+                                          blank=True)
 
     CIG_CHOICES = (
         ('1', 'Rarely/Never'),
@@ -114,8 +113,12 @@ class JobSubmitForm(forms.Form):
     )
     smoking_year = forms.ChoiceField(widget=forms.Select, choices=CIG_CHOICES,
                                      label='How long does your candidate have been smoking cigarette or pipes'
-                                                 'during his/her entire life?',
+                                           'during his/her entire life?',
                                      blank=True)
+
+    img = forms.ImageField(label="Upload the picture of your candidate\'s clock drawing.",
+                           help_text="Please follow the exactly same format as the example picture below.",
+                           required=True)
 
     # TODO: add clean methods?
     def clean(self):

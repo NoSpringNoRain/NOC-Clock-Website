@@ -36,35 +36,262 @@
 
         {# Parameters #}
         <div class="row">
+            {# age - required #}
             <div class="col-sm-4 col-sm-offset-2">
                 <div style="display: flex; justify-content: center; align-items: center">
-                    <div class="form-group {% if form.term1.errors %}has-error has-feedback{% endif %}"
+                    <div class="form-group {% if form.age.errors %}has-error has-feedback{% endif %}"
                          style="text-align: center;">
-                            <label for="id_education_level" style="font-weight: normal;">{{ form.education_level.label }}</label>
-                            <input type="text"
+                            <label for="id_age" style="font-weight: normal;">{{ form.age.label }}</label>
+                            <input type="number"
                                    class="form-control center-text"
                                    style="margin:auto; height:40px;"
-                                   name="education_level" id="id_education_level" placeholder=2 maxlength="10000" required>
-                            {% if form.term1.errors %}
+                                   name="age" id="id_age" maxlength="100" min="0" max="160" required>
+                            {% if form.age.errors %}
                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                             {% endif %}
-                        <p class="_help-text" align="center">{{ form.term1.help_text }}</p>
+                        <p class="_help-text" align="center">{{ form.age.help_text }}</p>
                     </div>
                 </div>
             </div>
+            {# sex #}
             <div class="col-sm-4">
                 <div style="display: flex; justify-content: center; align-items: center">
-                    <div class="form-group {% if form.term2.errors %}has-error has-feedback{% endif %}"
+                    <div class="form-group {% if form.sex.errors %}has-error has-feedback{% endif %}"
                          style="text-align: center;">
-                            <label for="id_term2" style="font-weight: normal;">{{ form.term2.label }}</label>
+                            <label for="id_sex" style="font-weight: normal;">{{ form.sex.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="sex" id="id_sex">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
+                            {% if form.sex.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.sex.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {# race #}
+            <div class="col-sm-4 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.race.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_race" style="font-weight: normal;">{{ form.race.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="race" id="id_race">
+                                <option value="1">White</option>
+                                <option value="2">Black/African American American Indian/Alaska</option>
+                                <option value="3">Native</option>
+                                <option value="4">Hispanic/Latinx</option>
+                                <option value="5">Asian</option>
+                                <option value="6">Middle Eastern</option>
+                                <option value="7">Other</option>
+                            </select>
+                            {% if form.race.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.race.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+            {# education level - required #}
+            <div class="col-sm-4">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.education_level.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_education" style="font-weight: normal;">{{ form.education_level.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="education_level" id="id_education" required>
+                                <option value="1">High school, but did not graduate</option>
+                                <option value="2">High school graduate</option>
+                                <option value="3">Attended some college</option>
+                                <option value="4">College graduate or higher</option>
+                            </select>
+                            {% if form.education_level.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.education_level.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {# family history #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.family_history.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_family" style="font-weight: normal;">{{ form.family_history.label }}</label>
+                            <br>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="family_history" id="id_family">
+                                <option value="1">YES</option>
+                                <option value="2">NO</option>
+                                <option value="3">Not Sure</option>
+                            </select>
+                            {% if form.family_history.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.family_history.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {# diagnosis history #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.diagnosis_history.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_diagnosis" style="font-weight: normal;">{{ form.diagnosis_history.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="diagnosis_history" id="id_diagnosis">
+                                <option value="1">YES</option>
+                                <option value="2">NO</option>
+                                <option value="3">Not Sure</option>
+                            </select>
+                            {% if form.diagnosis_history.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.diagnosis_history.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {# height #}
+            <div class="col-sm-4 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.height.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_height" style="font-weight: normal;">{{ form.height.label }}</label>
                             <input type="text"
                                    class="form-control center-text"
                                    style="margin:auto; height:40px;"
-                                   name="term2" id="id_term2" placeholder=6 maxlength="10000" required>
-                            {% if form.term2.errors %}
+                                   name="height" id="id_height" maxlength="8">
+                            {% if form.height.errors %}
                                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                             {% endif %}
-                        <p class="_help-text" align="center">{{ form.term2.help_text }}</p>
+                        <p class="_help-text" align="center">{{ form.height.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+            {# weight #}
+            <div class="col-sm-4">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.weight.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_weight" style="font-weight: normal;">{{ form.weight.label }}</label>
+                            <input type="number"
+                                   class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="weight" id="id_weight" min="0" max="300">
+                            {% if form.weight.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.weight.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+
+        <div class="row">
+            {# exercise frequency #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.exercise_frequency.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_exercise" style="font-weight: normal;">{{ form.exercise_frequency.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="exercise_frequency" id="id_exercise">
+                                <option value="1">Rarely/Never</option>
+                                <option value="2">1 time each week</option>
+                                <option value="3">2-3 times each week</option>
+                                <option value="4">4 or more times each week</option>
+                            </select>
+                            {% if form.exercise_frequency.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.exercise_frequency.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {# smoking year #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.smoking_year.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_smoking" style="font-weight: normal;">{{ form.smoking_year.label }}</label>
+                            <select class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="smoking_year" id="id_smoking">
+                                <option value="1">Rarely/Never</option>
+                                <option value="2">Less than 5 years</option>
+                                <option value="3">5-9 years</option>
+                                <option value="4">10-20 years</option>
+                                <option value="4">More than 20 years</option>
+                            </select>
+                            {% if form.smoking_year.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.smoking_year.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+
+        <div class="row">
+            {# image #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.img.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_img" style="font-weight: normal;">{{ form.img.label }}</label>
+                            <input type="file" required id="id_img" name="image">
+                            {% if form.img.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.img.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            {# image example #}
+            <div class="col-sm-8 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <img src="../../static/example.png" alt="example image">
                     </div>
                 </div>
             </div>
