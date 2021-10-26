@@ -20,7 +20,7 @@ class JobSubmitForm(forms.Form):
 
     age = forms.IntegerField(label='Candidate Age',
                              help_text='Enter your candidate\' age',
-                             required=True,
+                             required=False,
                              validators=[validate])
 
     SEX_CHOICES = (
@@ -29,8 +29,7 @@ class JobSubmitForm(forms.Form):
         ('3', 'Other')
     )
     sex = forms.ChoiceField(widget=forms.Select, choices=SEX_CHOICES,
-                            label='Select your Candidate\'s gender',
-                            blank=True)
+                            label='Select your Candidate\'s gender', required=False)
 
     RACE_CHOICES = (
         ('1', 'White'),
@@ -42,8 +41,7 @@ class JobSubmitForm(forms.Form):
         ('7', 'Other')
     )
     race = forms.ChoiceField(widget=forms.Select, choices=RACE_CHOICES,
-                             label='Select your Candidate\'s race',
-                             blank=True)
+                             label='Select your Candidate\'s race', required=False)
 
     EDU_CHOICES = (
         ('1', 'High school, but did not graduate'),
@@ -53,8 +51,7 @@ class JobSubmitForm(forms.Form):
     )
     education_level = forms.ChoiceField(widget=forms.Select, choices=EDU_CHOICES,
                                         label='Select your Candidate\'s education level',
-                                        blank=True,
-                                        required=True)
+                                        required=False)
 
     FAM_CHOICES = (
         ('1', 'YES'),
@@ -64,8 +61,7 @@ class JobSubmitForm(forms.Form):
     family_history = forms.ChoiceField(widget=forms.Select, choices=FAM_CHOICES,
                                        label='Does your candidate have a first-degree relative '
                                              '(mother, father, sister, brother) living or deceased with'
-                                             'a memory problem?',
-                                       blank=True)
+                                             'a memory problem?', required=False)
 
     DIAG_CHOICES = (
         ('1', 'YES'),
@@ -74,15 +70,14 @@ class JobSubmitForm(forms.Form):
     )
     diagnosis_history = forms.ChoiceField(widget=forms.Select, choices=DIAG_CHOICES,
                                           label='Does your candidate have ever been diagnosed with a'
-                                                'specific memory problem?',
-                                          blank=True)
+                                                'specific memory problem?',required=False)
 
     height = forms.CharField(label='Candidate Height (ft/inches)',
-                             help_text='Enter your candidate\' height, e.g. 5\'5\'\'')
+                             help_text='Enter your candidate\' height, e.g. 5\'5\'\'',required=False)
 
     weight = forms.FloatField(label='Candidate Weight (pounds)',
                               help_text='Enter your candidate\' weight, e.g. 150',
-                              validators=[validate])
+                              validators=[validate],required=False)
 
     EXE_CHOICES = (
         ('1', 'Rarely/Never'),
@@ -92,8 +87,7 @@ class JobSubmitForm(forms.Form):
     )
     exercise_frequency = forms.ChoiceField(widget=forms.Select, choices=EXE_CHOICES,
                                            label='How often does your candidate exercise or walk'
-                                                 'for more than 10 minutes (without stopping)?',
-                                           blank=True)
+                                                 'for more than 10 minutes (without stopping)?',required=False)
     ALC_CHOICES = (
         ('1', 'Rarely/Never'),
         ('2', 'Occasionally'),
@@ -101,8 +95,7 @@ class JobSubmitForm(forms.Form):
         ('4', 'Daily')
     )
     alcohol_frequency = forms.ChoiceField(widget=forms.Select, choices=ALC_CHOICES,
-                                          label='How often does your candidate drink alcoholic beverages?',
-                                          blank=True)
+                                          label='How often does your candidate drink alcoholic beverages?',required=False)
 
     CIG_CHOICES = (
         ('1', 'Rarely/Never'),
@@ -113,12 +106,11 @@ class JobSubmitForm(forms.Form):
     )
     smoking_year = forms.ChoiceField(widget=forms.Select, choices=CIG_CHOICES,
                                      label='How long does your candidate have been smoking cigarette or pipes'
-                                           'during his/her entire life?',
-                                     blank=True)
+                                           'during his/her entire life?',required=False)
 
     img = forms.ImageField(label="Upload the picture of your candidate\'s clock drawing.",
                            help_text="Please follow the exactly same format as the example picture below.",
-                           required=True)
+                           required=False)
 
     # TODO: add clean methods?
     def clean(self):

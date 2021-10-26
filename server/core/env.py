@@ -8,7 +8,7 @@ additional context processor
 from path import Path
 from server.config import CONFIG
 
-SERVER_NAME = "TEMPLATE"
+SERVER_NAME = "NOC Clock"
 
 # some paths
 ENV_PATH = Path(__file__).abspath()
