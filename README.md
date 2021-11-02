@@ -1,5 +1,4 @@
-# Template server
-#### A server shell for you to play with    
+# NOC CLock Website
 Powered by Django + Nginx + Postgres + Bootstrap + Celery.
 
 ------
