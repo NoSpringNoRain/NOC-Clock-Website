@@ -13,3 +13,8 @@ celery
 sqlalchemy
 flower
 django-celery-results
+pillow
+joblib
+sklearn
+opencv-python
+tensorflow

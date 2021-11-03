@@ -17,6 +17,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 # Defining the CLI via argument parsing
@@ -86,9 +87,9 @@ def main():
   }
 
   # model paths
-  cnn_cmd_clk_mdl_paths = [f'./model_cmd{i}/' for i in range(n_folds)]
-  logreg_mdl_paths = [f'./regression_f{i}.sav' for i in range(n_folds)]
-  logreg_mdl_paths_a = [f'./regression_age_cmd_f{i}.sav' for i in range(n_folds)]
+  cnn_cmd_clk_mdl_paths = [f'./core/Models/model_cmd{i}/' for i in range(n_folds)]
+  logreg_mdl_paths = [f'./core/Models/regression_f{i}.sav' for i in range(n_folds)]
+  logreg_mdl_paths_a = [f'./core/Models/regression_age_cmd_f{i}.sav' for i in range(n_folds)]
   
   # arg parsing through the cli
   args = cli(n_folds=n_folds)
