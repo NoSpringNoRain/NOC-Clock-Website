@@ -18,6 +18,8 @@ run `local-docker-compose up --build`.
 Cleaning up after docker for a clean rebuild:     
 1. `./cluspro-docker-compose rm` will remove the containers       
 2. `docker volume prune`
+3. `docker stop $(docker ps -a -q)`
+
 
 If you don't explicitly remove the volumes between docker runs, the databases persist, 
 so you can stop the containers and launch them again safely without any loss of data.
