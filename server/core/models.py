@@ -8,6 +8,7 @@ import tempfile
 from time import sleep
 from path import Path
 from celery import shared_task
+import subprocess
 
 from . import env
 from .utils import upload_file
@@ -39,17 +40,23 @@ def submit_job(self, job_id):
 
         if job.status == 'L.STR':
             logger.info(f'Started {job.status}')
-            sleep(1)
+            # sleep(1)
             job.status = 'L.RUN'
             job.save()
 
         if job.status == 'L.RUN':
             logger.info(f'Running {job.status}')
-            sleep(1)
+            # sleep(1)
 
             # TODO: get the prediction, assign to job.result and save()
             # result = job.term1 + job.term2
-            result = job.age + 1
+            imgpath = ".." + job.get_user_dir()+"/" + job.img
+
+            process = subprocess.Popen(['python3', './core/Models/diagnosis.py', imgpath],
+                                       stdout=subprocess.PIPE,
+                                       stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            result = "The likelihood for dementia is {}".format(str(stdout)[2:-3])
             outdir = job.get_output_dir()
             outdir.mkdir_p()
             job.get_result_file().write_text(str(result) + '\n')
@@ -59,7 +66,7 @@ def submit_job(self, job_id):
 
         if job.status == 'L.FIN':
             logger.info(f'Finalizing {job.status}')
-            sleep(1)
+            # sleep(1)
             job.status = 'L.CPL'
             job.save()
 
@@ -195,10 +202,10 @@ class Job(models.Model):
 
         user_dir = self._temp_dir.joinpath('user')
         user_dir.mkdir_p()
-
         # dump user files in user/
         for name, file in files.items():
             fpath = user_dir.joinpath(file.name)
+            self.imgpath = fpath
             upload_file(file, fpath)
 
         # dump user data in user/user.json
