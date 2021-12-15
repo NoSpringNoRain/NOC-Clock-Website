@@ -1,4 +1,4 @@
-# NOC CLock Website
+# NOC Clock Website
 Powered by Django + Nginx + Postgres + Bootstrap + Celery.
 
 ------
