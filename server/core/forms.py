@@ -14,24 +14,24 @@ def validate(input):
 
 class JobSubmitForm(forms.Form):
     job_name = forms.CharField(label='Job name',
-                               help_text='Enter your prediction job name here',
                                max_length=100,
                                required=False)
 
-    age = forms.IntegerField(label='Candidate Age',
-                             help_text='Enter your candidate\' age',
+    age = forms.IntegerField(label='Age',
                              required=False,
                              validators=[validate])
 
     SEX_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'Male'),
         ('2', 'Female'),
         ('3', 'Other')
     )
     sex = forms.ChoiceField(widget=forms.Select, choices=SEX_CHOICES,
-                            label='Select your Candidate\'s gender', required=False)
+                            label='Gender', required=False)
 
     RACE_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'White'),
         ('2', 'Black/African American American Indian/Alaska'),
         ('3', 'Native'),
@@ -41,63 +41,69 @@ class JobSubmitForm(forms.Form):
         ('7', 'Other')
     )
     race = forms.ChoiceField(widget=forms.Select, choices=RACE_CHOICES,
-                             label='Select your Candidate\'s race', required=False)
+                             label='Race', required=False)
 
     EDU_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'High school, but did not graduate'),
         ('2', 'High school graduate'),
         ('3', 'Attended some college'),
         ('4', 'College graduate or higher'),
     )
     education_level = forms.ChoiceField(widget=forms.Select, choices=EDU_CHOICES,
-                                        label='Select your Candidate\'s education level',
+                                        label='Education Level',
                                         required=False)
 
     FAM_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'YES'),
         ('2', 'NO'),
         ('3', 'Not Sure')
     )
     family_history = forms.ChoiceField(widget=forms.Select, choices=FAM_CHOICES,
-                                       label='Does your candidate have a first-degree relative '
-                                             '(mother, father, sister, brother) living or deceased with'
+                                       label='Do you have a first-degree relative '
+                                             '(mother, father, sister, brother) living or deceased with '
                                              'a memory problem?', required=False)
 
     DIAG_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'YES'),
         ('2', 'NO'),
         ('3', 'Not Sure')
     )
     diagnosis_history = forms.ChoiceField(widget=forms.Select, choices=DIAG_CHOICES,
-                                          label='Does your candidate have ever been diagnosed with a'
-                                                'specific memory problem?',required=False)
+                                          label='Have you ever been diagnosed with a'
+                                                'specific memory problem?', required=False)
 
     height = forms.CharField(label='Candidate Height (ft/inches)',
-                             help_text='Enter your candidate\' height, e.g. 5\'5\'\'',required=False)
+                             help_text='Enter your height, e.g. 5\'5\'\'', required=False)
 
     weight = forms.FloatField(label='Candidate Weight (pounds)',
-                              help_text='Enter your candidate\' weight, e.g. 150',
-                              validators=[validate],required=False)
+                              help_text='Enter your weight, e.g. 150',
+                              validators=[validate], required=False)
 
     EXE_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'Rarely/Never'),
         ('2', '1 time each week'),
         ('3', '2-3 times each week'),
         ('4', '4 or more times each week')
     )
     exercise_frequency = forms.ChoiceField(widget=forms.Select, choices=EXE_CHOICES,
-                                           label='How often does your candidate exercise or walk'
+                                           label='How often do you exercise or walk'
                                                  'for more than 10 minutes (without stopping)?',required=False)
     ALC_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'Rarely/Never'),
         ('2', 'Occasionally'),
         ('3', 'Weekly'),
         ('4', 'Daily')
     )
     alcohol_frequency = forms.ChoiceField(widget=forms.Select, choices=ALC_CHOICES,
-                                          label='How often does your candidate drink alcoholic beverages?',required=False)
+                                          label='How often do you drink alcoholic beverages?',required=False)
 
     CIG_CHOICES = (
+        ('0', 'N/A'),
         ('1', 'Rarely/Never'),
         ('2', 'Less than 5 years'),
         ('3', '5-9 years'),
@@ -105,14 +111,13 @@ class JobSubmitForm(forms.Form):
         ('5', 'More than 20 years')
     )
     smoking_year = forms.ChoiceField(widget=forms.Select, choices=CIG_CHOICES,
-                                     label='How long does your candidate have been smoking cigarette or pipes'
-                                           'during his/her entire life?',required=False)
+                                     label='How long have you been smoking cigarette or pipes'
+                                           'during your entire life?', required=False)
 
-    img = forms.ImageField(label="Upload the picture of your candidate\'s clock drawing.",
-                           help_text="Please follow the exactly same format as the example picture below.",
-                           required=False)
+    img = forms.ImageField(label="Upload your clock drawing", required=False)
 
-    # TODO: add clean methods?
+
+
     def clean(self):
         cleaned_data = super().clean()
         # s1, s2 = cleaned_data.get('term1'), cleaned_data.get('term2')
