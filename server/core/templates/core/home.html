@@ -15,7 +15,7 @@
         <h4 align="center">Enter information to start prediction</h4>
         <br>
 
-{# Job name #}
+{# job name #}
 <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
         <div class="form-group {% if form.job_name.errors %}has-error has-feedback{% endif %}"
@@ -264,7 +264,7 @@
                 <label for="id_other_diagnosis" style="font-weight: bold">{{ form.other_diagnosis.label }}</label>
                 <input class="form-control center-text"
                        id="id_other_diagnosis"
-                       maxlength="100" name="other_diagnosis" placeholder="Specify the diagnosis"
+                       maxlength="100" name="other_diagnosis" placeholder="Enter your diagnosed disease"
                        style="margin:auto; height:40px; width: 700px" type="text"/>
                 {% if form.other_diagnosis.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -278,9 +278,10 @@
 <br>
 
 <div class="row">
+    {# cerebrovascular disease #}
     <div class="form-group col-sm-8 col-sm-offset-2">
         <p style="font-weight: bold">
-            Have you ever been diagnosed with any of the following cerebrovascular disease? (Choose all that comply)
+            Have you been diagnosed with any of the following cerebrovascular disease? (Choose all that comply)
             <br>
             If yes, what is the year of diagnosis for each specific disease?</p>
         <div style="display: flex; justify-content: flex-start">
@@ -371,7 +372,7 @@
             <div class="col-sm-5">
             <input id="id_cerebral_palsy" name="cerebral_palsy" type="checkbox">
             <label for='id_cerebral_palsy' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Brain Tumor
+                Cerebral Palsy
             </label>
             </div>
             <div>
@@ -387,11 +388,83 @@
 <br>
 
 <div class="row">
+    {# other medical history #}
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="display: flex; justify-content: center; align-items: center">
+            <div class="form-group {% if form.other_medical_history.errors %}has-error has-feedback{% endif %}"
+                 style="text-align: center;">
+                <label for="id_other_medical_history" style="font-weight: bold; text-align: justify">{{ form.other_medical_history.label }}</label>
+                <select class="form-control center-text"
+                        id="id_other_medical_history"
+                        name="other_medical_history" style="margin:auto; height:40px; width: 700px;">
+                    <option value="0">--Please choose an option--</option>
+                    <option value="1">YES</option>
+                    <option value="2">NO</option>
+                </select>
+                {% if form.other_medical_history.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.other_medical_history.help_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    {# other medical condition #}
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="display: flex; justify-content: center; align-items: center">
+            <div class="form-group {% if form.other_diagnosis.errors %}has-error has-feedback{% endif %}"
+                style="text-align: center">
+                <label for="id_condition" style="font-weight: bold">{{ form.other_medical_condition.label }}</label>
+                <textarea id="id_condition" name="other_medical_condition" style="height: 60px; width: 700px; text-align: center"
+                          placeholder="List the condition and the year of diagnosis:"></textarea>
+                {% if form.other_diagnosis.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.other_diagnosis.help_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    {# exercise frequency #}
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="display: flex; justify-content: center; align-items: center">
+            <div class="form-group {% if form.exercise_frequency.errors %}has-error has-feedback{% endif %}"
+                 style="text-align: center">
+                <label for="id_exercise" style="font-weight: bold; text-align: justify">{{ form.exercise_frequency.label }}</label>
+                <select class="form-control center-text"
+                        id="id_exercise"
+                        name="exercise_frequency" style="margin:auto; height:40px; width: 700px;">
+                    <option value="0">--Please choose an option--</option>
+                    <option value="1">Rarely/Never</option>
+                    <option value="2">1 time each week</option>
+                    <option value="3">2-3 times each week</option>
+                    <option value="4">4 or more times each week</option>
+                </select>
+                {% if form.exercise_frequency.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.exercise_frequency.help_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
     {# alcohol frequency #}
     <div class="col-sm-8 col-sm-offset-2">
         <div style="display: flex; justify-content: center; align-items: center">
             <div class="form-group {% if form.alcohol_frequency.errors %}has-error has-feedback{% endif %}"
-                 style="text-align: center;">
+                 style="text-align: center">
                 <label for="id_alcohol" style="font-weight: bold; text-align: justify">{{ form.alcohol_frequency.label }}</label>
                 <select class="form-control center-text"
                         id="id_alcohol"
@@ -434,6 +507,56 @@
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
                 <p align="center" class="_help-text">{{ form.smoking_year.help_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    {# recalling trouble #}
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="display: flex; justify-content: center; align-items: center">
+            <div class="form-group {% if form.recalling_trouble.errors %}has-error has-feedback{% endif %}"
+                 style="text-align: center;">
+                <label for="id_recalling_trouble" style="font-weight: bold; text-align: justify">{{ form.recalling_trouble.label }}</label>
+                <select class="form-control center-text"
+                        id="id_recalling_trouble"
+                        name="recalling_trouble" style="margin:auto; height:40px; width: 700px;">
+                    <option value="0">--Please choose an option--</option>
+                    <option value="1">YES</option>
+                    <option value="2">NO</option>
+                </select>
+                {% if form.recalling_trouble.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.recalling_trouble.help_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    {# home appliances using trouble #}
+    <div class="col-sm-8 col-sm-offset-2">
+        <div style="display: flex; justify-content: center; align-items: center">
+            <div class="form-group {% if form.home_appliances_trouble.errors %}has-error has-feedback{% endif %}"
+                 style="text-align: center;">
+                <label for="id_home_appliances_trouble" style="font-weight: bold; text-align: justify">{{ form.home_appliances_trouble.label }}</label>
+                <select class="form-control center-text"
+                        id="id_home_appliances_trouble"
+                        name="home_appliances_trouble" style="margin:auto; height:40px; width: 700px;">
+                    <option value="0">--Please choose an option--</option>
+                    <option value="1">YES</option>
+                    <option value="2">NO</option>
+                </select>
+                {% if form.home_appliances_trouble.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.home_appliances_trouble.help_text }}</p>
             </div>
         </div>
     </div>

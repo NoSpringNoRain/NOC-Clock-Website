@@ -97,7 +97,7 @@ class JobSubmitForm(forms.Form):
                                         label='If yes, what was the specific diagnosis?',
                                         required=False)
 
-    other_diagnosis = forms.CharField(label='Specify what other diagnosis you got', max_length=100,
+    other_diagnosis = forms.CharField(label='Specify what other diagnosis you got:', max_length=100,
                                       required=False)
 
     stoke = forms.BooleanField(required=False)
@@ -114,6 +114,22 @@ class JobSubmitForm(forms.Form):
     brain_tumors_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
     cerebral_palsy = forms.BooleanField(required=False)
     cerebral_palsy_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+
+    OTHER_CHOICES = (
+        ('0', 'N/A'),
+        ('1', 'YES'),
+        ('2', 'NO'),
+    )
+    other_medical_history = forms.ChoiceField(widget=forms.Select, choices=OTHER_CHOICES,
+                                              label='Have you been diagnosed with any of the following '
+                                                    'medical condition(s): cirrhosis of the liver, cancer, '
+                                                    'heart disease, COPD, kidney disease requiring dialysis, '
+                                                    'or diabetes?',
+                                              required=False)
+
+    other_medical_condition = forms.CharField(widget=forms.Textarea,
+                                              label='If yes, please list the condition and the year of diagnosis:',
+                                              required=False)
 
     EXE_CHOICES = (
         ('0', 'N/A'),
@@ -146,6 +162,25 @@ class JobSubmitForm(forms.Form):
     smoking_year = forms.ChoiceField(widget=forms.Select, choices=CIG_CHOICES,
                                      label='How long have you been smoking cigarette or pipes'
                                            'during your entire life?', required=False)
+
+    RECALL_CHOICES = (
+        ('0', 'N/A'),
+        ('1', 'YES'),
+        ('2', 'NO'),
+    )
+    recalling_trouble = forms.ChoiceField(widget=forms.Select, choices=RECALL_CHOICES,
+                                          label='Do you have trouble recalling things more than you'
+                                                ' did in the past 5 years?',
+                                          required=False)
+
+    APP_CHOICES = (
+        ('0', 'N/A'),
+        ('1', 'YES'),
+        ('2', 'NO'),
+    )
+    home_appliances_trouble = forms.ChoiceField(widget=forms.Select, choices=APP_CHOICES,
+                                                label='Do you have trouble using household appliances?',
+                                                required=False)
 
     img = forms.ImageField(label="Upload your clock drawing", required=False)
 
