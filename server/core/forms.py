@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django import forms
 from django.contrib.auth.password_validation import password_validators_help_text_html
 from django.core.validators import ValidationError
@@ -14,12 +16,10 @@ def validate(input):
 
 class JobSubmitForm(forms.Form):
     job_name = forms.CharField(label='Job name',
-                               max_length=100,
                                required=False)
 
     age = forms.IntegerField(label='Age',
-                             required=False,
-                             validators=[validate])
+                             required=False)
 
     SEX_CHOICES = (
         ('0', 'N/A'),
@@ -29,6 +29,12 @@ class JobSubmitForm(forms.Form):
     )
     sex = forms.ChoiceField(widget=forms.Select, choices=SEX_CHOICES,
                             label='Gender', required=False)
+
+    height = forms.CharField(label='Height (ft/inches)',
+                             help_text='Enter your height, e.g. 5\'5\'\'', required=False)
+
+    weight = forms.FloatField(label='Weight (pounds)',
+                              help_text='Enter your weight in pounds, e.g. 140.5', required=False)
 
     RACE_CHOICES = (
         ('0', 'N/A'),
@@ -72,15 +78,42 @@ class JobSubmitForm(forms.Form):
         ('3', 'Not Sure')
     )
     diagnosis_history = forms.ChoiceField(widget=forms.Select, choices=DIAG_CHOICES,
-                                          label='Have you ever been diagnosed with a'
-                                                'specific memory problem?', required=False)
+                                          label='Has a doctor, nurse, or other healthcare professional '
+                                                'ever told you that you have a memory or thinking problem '
+                                                'or diagnosed you with a specific memory and thinking problem?',
+                                          required=False)
 
-    height = forms.CharField(label='Candidate Height (ft/inches)',
-                             help_text='Enter your height, e.g. 5\'5\'\'', required=False)
+    PROB_CHOICES = (
+        ('0', 'N/A'),
+        ('1', 'Mild cognitive impairment'),
+        ('2', 'Alzheimer\'s disease'),
+        ('3', 'Vascular dementia'),
+        ('4', 'Fronto-temporal dementia'),
+        ('5', 'Lewy-body dementia/Parkinson\'s disease'),
+        ('6', 'Chronic traumatic encephalopathy'),
+        ('7', 'Other')
+    )
+    memory_problems = forms.ChoiceField(widget=forms.Select, choices=PROB_CHOICES,
+                                        label='If yes, what was the specific diagnosis?',
+                                        required=False)
 
-    weight = forms.FloatField(label='Candidate Weight (pounds)',
-                              help_text='Enter your weight, e.g. 150',
-                              validators=[validate], required=False)
+    other_diagnosis = forms.CharField(label='Specify what other diagnosis you got', max_length=100,
+                                      required=False)
+
+    stoke = forms.BooleanField(required=False)
+    stoke_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    tia = forms.BooleanField(required=False)
+    tia_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    pd = forms.BooleanField(required=False)
+    pd_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    seizures = forms.BooleanField(required=False)
+    seizures_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    multi_sclerosis = forms.BooleanField(required=False)
+    multi_sclerosis_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    brain_tumors = forms.BooleanField(required=False)
+    brain_tumors_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
+    cerebral_palsy = forms.BooleanField(required=False)
+    cerebral_palsy_year = forms.IntegerField(required=False, min_value=age, max_value=datetime.today().year)
 
     EXE_CHOICES = (
         ('0', 'N/A'),
@@ -91,7 +124,7 @@ class JobSubmitForm(forms.Form):
     )
     exercise_frequency = forms.ChoiceField(widget=forms.Select, choices=EXE_CHOICES,
                                            label='How often do you exercise or walk'
-                                                 'for more than 10 minutes (without stopping)?',required=False)
+                                                 'for more than 10 minutes (without stopping)?', required=False)
     ALC_CHOICES = (
         ('0', 'N/A'),
         ('1', 'Rarely/Never'),
@@ -100,7 +133,7 @@ class JobSubmitForm(forms.Form):
         ('4', 'Daily')
     )
     alcohol_frequency = forms.ChoiceField(widget=forms.Select, choices=ALC_CHOICES,
-                                          label='How often do you drink alcoholic beverages?',required=False)
+                                          label='How often do you drink alcoholic beverages?', required=False)
 
     CIG_CHOICES = (
         ('0', 'N/A'),
@@ -115,8 +148,6 @@ class JobSubmitForm(forms.Form):
                                            'during your entire life?', required=False)
 
     img = forms.ImageField(label="Upload your clock drawing", required=False)
-
-
 
     def clean(self):
         cleaned_data = super().clean()
