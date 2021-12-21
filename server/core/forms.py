@@ -63,8 +63,7 @@ class JobSubmitForm(forms.Form):
     FAM_CHOICES = (
         ('0', 'N/A'),
         ('1', 'YES'),
-        ('2', 'NO'),
-        ('3', 'Not Sure')
+        ('2', 'NO')
     )
     family_history = forms.ChoiceField(widget=forms.Select, choices=FAM_CHOICES,
                                        label='Do you have a first-degree relative '
@@ -75,7 +74,7 @@ class JobSubmitForm(forms.Form):
         ('0', 'N/A'),
         ('1', 'YES'),
         ('2', 'NO'),
-        ('3', 'Not Sure')
+        ('3', 'Unknown')
     )
     diagnosis_history = forms.ChoiceField(widget=forms.Select, choices=DIAG_CHOICES,
                                           label='Has a doctor, nurse, or other healthcare professional '

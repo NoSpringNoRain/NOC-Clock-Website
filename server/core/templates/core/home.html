@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block header_add %}
-    <link rel='stylesheet' type='text/css' href={% static "core/css/home.css" %} xmlns="http://www.w3.org/1999/html"/>
-    <link rel='stylesheet' type='text/css' href={% static "core/css/spinner.css" %} />
-    <link rel='stylesheet' type='text/css' href={% static "core/css/apple-checkbox.css" %} />
+<link rel='stylesheet' type='text/css' href={% static "core/css/home.css" %} xmlns="http://www.w3.org/1999/html"/>
+<link rel='stylesheet' type='text/css' href={% static "core/css/spinner.css" %} />
+<link rel='stylesheet' type='text/css' href={% static "core/css/apple-checkbox.css" %} />
 {% endblock %}
 
 {% block content %}
-    <form class="form-jobs" enctype='multipart/form-data' action={% url "index" %} method='post'>
-    {% csrf_token %}
-        <h1 align="center">Job submission</h1>
-        <hr>
-        <h4 align="center">Enter information to start prediction</h4>
-        <br>
+<form class="form-jobs" enctype='multipart/form-data' action={% url "index" %} method='post'>
+{% csrf_token %}
+<h1 align="center">Job submission</h1>
+<hr>
+<h4 align="center">Enter information to start prediction</h4>
+<br>
 
 {# job name #}
 <div class="row">
@@ -186,7 +186,6 @@
                     <option value="0">--Please choose an option--</option>
                     <option value="1">YES</option>
                     <option value="2">NO</option>
-                    <option value="3">Not Sure</option>
                 </select>
                 {% if form.family_history.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -207,12 +206,12 @@
                  style="text-align: center;">
                 <label for="id_diagnosis" style="font-weight: bold; text-align: justify">{{ form.diagnosis_history.label }}</label>
                 <select class="form-control center-text"
-                        id="id_diagnosis"
+                        id="id_diagnosis" onchange="showDiv(this)"
                         name="diagnosis_history" style="margin:auto; height:40px; width: 700px;">
                     <option value="0">--Please choose an option--</option>
                     <option value="1">YES</option>
                     <option value="2">NO</option>
-                    <option value="3">Not Sure</option>
+                    <option value="3">Unknown</option>
                 </select>
                 {% if form.diagnosis_history.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -225,57 +224,61 @@
 
 <br>
 
-<div class="row">
-    {# memory problems #}
-    <div class="col-sm-8 col-sm-offset-2">
-        <div style="display: flex; justify-content: center; align-items: center">
-            <div class="form-group {% if form.memory_problems.errors %}has-error has-feedback{% endif %}"
-                 style="text-align: center;">
-                <label for="id_memory_problems" style="font-weight: bold; text-align: justify">{{ form.memory_problems.label }}</label>
-                <select class="form-control center-text"
-                        id="id_memory_problems"
-                        name="memory_problems" style="margin:auto; height:40px; width: 700px;">
-                    <option value="0">--Please choose an option--</option>
-                    <option value="1">Mild cognitive impairment</option>
-                    <option value="2">Alzheimer's disease</option>
-                    <option value="3">Vascular dementia</option>
-                    <option value="4">Fronto-temporal dementia</option>
-                    <option value="5">Lewy-body dementia/Parkinson's disease</option>
-                    <option value="6">Chronic traumatic encephalopathy</option>
-                    <option value="7">Other, specify</option>
-                </select>
-                {% if form.memory_problems.errors %}
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                {% endif %}
-                <p align="center" class="_help-text">{{ form.memory_problems.help_text }}</p>
+<div id="hidden_diagnosis" style="display: none;">
+    <div class="row">
+        {# memory problems #}
+        <div class="col-sm-8 col-sm-offset-2">
+            <div style="display: flex; justify-content: center; align-items: center">
+                <div class="form-group {% if form.memory_problems.errors %}has-error has-feedback{% endif %}"
+                     style="text-align: center;">
+                    <label for="id_memory_problems" style="font-weight: bold; text-align: justify">{{ form.memory_problems.label }}</label>
+                    <select class="form-control center-text"
+                            id="id_memory_problems" onchange="showOther(this)"
+                            name="memory_problems" style="margin:auto; height:40px; width: 700px;">
+                        <option value="0">--Please choose an option--</option>
+                        <option value="1">Mild cognitive impairment</option>
+                        <option value="2">Alzheimer's disease</option>
+                        <option value="3">Vascular dementia</option>
+                        <option value="4">Fronto-temporal dementia</option>
+                        <option value="5">Lewy-body dementia/Parkinson's disease</option>
+                        <option value="6">Chronic traumatic encephalopathy</option>
+                        <option value="7">Other, specify</option>
+                    </select>
+                    {% if form.memory_problems.errors %}
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                    <p align="center" class="_help-text">{{ form.memory_problems.help_text }}</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <br>
 </div>
 
-<br>
-
-{# other diagnosis #}
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        <div style="display: flex; justify-content: center; align-items: center">
-            <div class="form-group {% if form.other_diagnosis.errors %}has-error has-feedback{% endif %}"
-                style="text-align: center">
-                <label for="id_other_diagnosis" style="font-weight: bold">{{ form.other_diagnosis.label }}</label>
-                <input class="form-control center-text"
-                       id="id_other_diagnosis"
-                       maxlength="100" name="other_diagnosis" placeholder="Enter your diagnosed disease"
-                       style="margin:auto; height:40px; width: 700px" type="text"/>
-                {% if form.other_diagnosis.errors %}
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                {% endif %}
-                <p align="center" class="_help-text">{{ form.other_diagnosis.help_text }}</p>
+<div id="hidden_other" style="display: none;">
+    {# other diagnosis #}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div style="display: flex; justify-content: center; align-items: center">
+                <div class="form-group {% if form.other_diagnosis.errors %}has-error has-feedback{% endif %}"
+                     style="text-align: center">
+                    <label for="id_other_diagnosis" style="font-weight: bold">{{ form.other_diagnosis.label }}</label>
+                    <input class="form-control center-text"
+                           id="id_other_diagnosis"
+                           maxlength="100" name="other_diagnosis" placeholder="Enter your diagnosed disease"
+                           style="margin:auto; height:40px; width: 700px" type="text"/>
+                    {% if form.other_diagnosis.errors %}
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                    <p align="center" class="_help-text">{{ form.other_diagnosis.help_text }}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<br>
+    <br>
+</div>
 
 <div class="row">
     {# cerebrovascular disease #}
@@ -300,10 +303,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_tia" name="tia" type="checkbox">
-            <label for='id_tia' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Transient Ischemic Attack
-            </label>
+                <input id="id_tia" name="tia" type="checkbox">
+                <label for='id_tia' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Transient Ischemic Attack
+                </label>
             </div>
             <div>
                 <label for="id_tia_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -314,10 +317,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_pd" name="pd" type="checkbox">
-            <label for='id_pd' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Parkinson's Disease
-            </label>
+                <input id="id_pd" name="pd" type="checkbox">
+                <label for='id_pd' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Parkinson's Disease
+                </label>
             </div>
             <div>
                 <label for="id_pd_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -328,10 +331,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_seizures" name="seizures" type="checkbox">
-            <label for='id_seizures' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Seizures
-            </label>
+                <input id="id_seizures" name="seizures" type="checkbox">
+                <label for='id_seizures' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Seizures
+                </label>
             </div>
             <div>
                 <label for="id_seizures_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -342,10 +345,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_multi_sclerosis" name="multi_sclerosis" type="checkbox">
-            <label for='id_multi_sclerosis' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Multiple Sclerosis
-            </label>
+                <input id="id_multi_sclerosis" name="multi_sclerosis" type="checkbox">
+                <label for='id_multi_sclerosis' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Multiple Sclerosis
+                </label>
             </div>
             <div>
                 <label for="id_multi_sclerosis_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -356,10 +359,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_brain_tumors" name="brain_tumors" type="checkbox">
-            <label for='id_brain_tumors' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Brain Tumor
-            </label>
+                <input id="id_brain_tumors" name="brain_tumors" type="checkbox">
+                <label for='id_brain_tumors' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Brain Tumor
+                </label>
             </div>
             <div>
                 <label for="id_brain_tumors_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -370,10 +373,10 @@
         </div>
         <div style="display: flex; justify-content: flex-start">
             <div class="col-sm-5">
-            <input id="id_cerebral_palsy" name="cerebral_palsy" type="checkbox">
-            <label for='id_cerebral_palsy' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                Cerebral Palsy
-            </label>
+                <input id="id_cerebral_palsy" name="cerebral_palsy" type="checkbox">
+                <label for='id_cerebral_palsy' style="font-weight: normal; line-height: 20px; margin-left: 1em">
+                    Cerebral Palsy
+                </label>
             </div>
             <div>
                 <label for="id_cerebral_palsy_year" style="font-weight: normal; line-height: 20px; margin-right: 1em">
@@ -395,7 +398,7 @@
                  style="text-align: center;">
                 <label for="id_other_medical_history" style="font-weight: bold; text-align: justify">{{ form.other_medical_history.label }}</label>
                 <select class="form-control center-text"
-                        id="id_other_medical_history"
+                        id="id_other_medical_history" onchange="showCondition(this)"
                         name="other_medical_history" style="margin:auto; height:40px; width: 700px;">
                     <option value="0">--Please choose an option--</option>
                     <option value="1">YES</option>
@@ -412,12 +415,13 @@
 
 <br>
 
+<div id="hidden_condition" style="display: none">
 <div class="row">
     {# other medical condition #}
     <div class="col-sm-8 col-sm-offset-2">
         <div style="display: flex; justify-content: center; align-items: center">
             <div class="form-group {% if form.other_diagnosis.errors %}has-error has-feedback{% endif %}"
-                style="text-align: center">
+                 style="text-align: center">
                 <label for="id_condition" style="font-weight: bold">{{ form.other_medical_condition.label }}</label>
                 <textarea id="id_condition" name="other_medical_condition" style="height: 60px; width: 700px; text-align: center"
                           placeholder="List the condition and the year of diagnosis:"></textarea>
@@ -431,6 +435,7 @@
 </div>
 
 <br>
+</div>
 
 <div class="row">
     {# exercise frequency #}
