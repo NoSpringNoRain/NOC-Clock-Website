@@ -56,7 +56,7 @@ def submit_job(self, job_id):
                                        stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE)
             stdout, stderr = process.communicate()
-            result = "The likelihood for dementia is {}".format(str(stdout)[2:-3])
+            result = "The likelihood for dementia is {}".format(round(float(str(stdout)[2:-3]),2))
             outdir = job.get_output_dir()
             outdir.mkdir_p()
             job.get_result_file().write_text(str(result) + '\n')
