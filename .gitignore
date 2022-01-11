@@ -5,6 +5,7 @@ storage/jobs/*
 storage/flower.db
 storage/state.db
 server/core/migrations/[0-9]*
+instructionfiles
 
 ###########################################
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm

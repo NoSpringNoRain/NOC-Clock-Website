@@ -1,10 +1,12 @@
 {
+    "DATABASE_VOLUME": "postgres_data",
     "EMAIL_HOST": "smtp.gmail.com",
-    "EMAIL_USER": "",
     "EMAIL_PASS": "",
-    "SECRET_KEY": "",
-    "RABBITMQ_USER": "",
-    "RABBITMQ_PASS": "",
+    "EMAIL_USER": "",
     "LOCAL_PORT": "127.0.0.1:8080",
-    "PRODUCTION": "no"
+    "LOCAL_STORAGE": "./storage",
+    "PRODUCTION": "no",
+    "RABBITMQ_PASS": "BxIugkSkkTuFatn",
+    "RABBITMQ_USER": "rabbit",
+    "SECRET_KEY": "#._`6k+HDE R\t3;X~z:jV'D1y(}N-6k-Hp\u000b%\\NIS`K>YKRZ(,J}6pI"
 }
