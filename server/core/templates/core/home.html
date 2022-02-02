@@ -577,17 +577,29 @@
                  style="text-align: center;">
                 <span style="color: red; font-weight: bolder">*</span>
                 <label for="id_img" style="font-weight: bold; text-align: justify">{{ form.img.label }}</label>
-                <p style="font-weight: bold; text-align: justify">Please follow below instructions to draw a clock on a
-                    piece of paper using a pencil,
-                    and then upload a photo or scanned copy of your drawing."</p>
-                <p style="font-weight: bold; text-align: justify">Instruction: Draw the face of an analog clock with all
-                    the numbers,
-                    and set the hands showing 10 minutes past 11 o’clock.</p>
+<!--                <p style="font-weight: bold; text-align: justify">Please follow below instructions to draw a clock on a-->
+<!--                    piece of paper using a pencil,-->
+<!--                    and then upload a photo or scanned copy of your drawing."</p>-->
+<!--                <p style="font-weight: bold; text-align: justify">Instruction: Draw the face of an analog clock with all-->
+<!--                    the numbers,-->
+<!--                    and set the hands showing 10 minutes past 11 o’clock.</p>-->
+<!--                <a style="font-weight: bold; text-align: justify">Step 1: </a>-->
+                <button type="submit" onclick="window.open('https://drive.google.com/file/d/1wPj1rnYcz-pWBfLbHXLFDTbKfSqYJwMf/view')">Take Clock Drawing Test</button>
                 <input id="id_img" name="img" required type="file">
                 {% if form.img.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
                 <p align="center" class="_help-text">{{ form.img.help_text }}</p>
+                <br>
+<!--                <a style="font-weight: bold; text-align: justify">Step 2: </a>-->
+                <span style="color: red; font-weight: bolder">*</span>
+                <label for="id_img" style="font-weight: bold; text-align: justify">{{ form.img_trail.label }}</label>
+                <button type="submit" onclick="window.open('https://drive.google.com/file/d/1BCmzZ6r3wZgFAF97c9GdAtYnprF9B0YM/view')">Take Trail Test</button>
+                <input id="id_img_trail" name="img_trail" required type="file">
+<!--                {% if form.img_trail.errors %}-->
+<!--                <span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+<!--                {% endif %}-->
+<!--                <p align="center" class="_help-text">{{ form.img_trail.help_text }}</p>-->
             </div>
         </div>
     </div>
