@@ -3,11 +3,15 @@
 {% block content %}
 
 <div class="jumbotron text-center">
-	<h1>Welcome to {{ SERVER_NAME }}</h1>
-	<p>Submit clock drawing image to screen for dementia.</p>
-    <a class="btn btn-md btn-default" href="{% url 'login' %}?anonym=true" style="max-width: 100%">
-        Use the server without the benefits of your own account &raquo;
-    </a>
+	<div>
+        <img src="server/core/templates/assets/Boston-University-Logo.png" width="100px">
+        <h2>Welcome to {{ SERVER_NAME }}</h2>
+    </div>
+    <p>This website is built on the result of the research study entitled “Assessment of Dementia from Drawing Tests using AI Methods”, led by Professor
+        <a href="https://sites.bu.edu/paschalidis/people/yannis-paschalidis/">Ioannis Paschalidis</a> of the <a href="https://sites.bu.edu/paschalidis/">NOC</a> Lab of Boston University.
+        The objective is to collect diverse data, which will enable the development of better and more reliable Artificial Intelligence (AI) models that assess the subject’s cognitive status and determine whether it can be characterized as normal or whether it is consistent with cognitive decline that may be associated with Alzheimer’s disease and other forms of dementia.</p>
+    <p>You can log in or click on the guest entry port to start your assessment.</p>
+
 </div>
 
 <form class="form-horizontal my-signin-form" enctype="multipart/form-data" action={% url "login" %} method="post">
@@ -33,5 +37,10 @@
 	    <button class="btn btn-md btn-success btn-block" type="submit" name="action" value="Login">Sign in</button>
      </div>
 </form>
+
+    <a class="btn btn-md btn-lg" href="{% url 'login' %}?anonym=true" style="max-width: 100%">
+        Or use the server as a guest
+    </a>
+
 
 {% endblock %}
