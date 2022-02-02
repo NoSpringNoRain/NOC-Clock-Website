@@ -171,7 +171,7 @@ def signup_page(request):  # TODO: add second password field
     logout(request)
 
     context = {'page_title': 'Sign Up',
-               'page_description': '(you must provide your academic e-mail address)',
+               'page_description': '(please provide your e-mail address)',
                'submit_text': 'Sign Up'}
 
     errors = []
