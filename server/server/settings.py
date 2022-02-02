@@ -29,7 +29,7 @@ DEBUG = not CONFIG['production']
 if CONFIG['production']:
     ALLOWED_HOSTS = ['servertemplate.org']
 else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0','health-ai.bu.edu','47.20.68.65']
 
 
 # Application definition
