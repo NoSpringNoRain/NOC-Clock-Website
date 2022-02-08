@@ -27,3 +27,4 @@ function showCondition(select){
 		document.getElementById('hidden_condition').style.display = "none";
 	}
 }
+

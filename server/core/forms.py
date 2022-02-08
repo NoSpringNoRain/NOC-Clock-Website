@@ -181,9 +181,9 @@ class JobSubmitForm(forms.Form):
                                                 label='Do you have trouble using household appliances?',
                                                 required=False)
 
-    img = forms.ImageField(label="Step 1: ", required=False)
+    img = forms.ImageField(label="Step 1: Take Clock Drawing Test", required=True)
 
-    img_trail = forms.ImageField(label="Step 2: ", required=False)
+    img_trail = forms.ImageField(label="Step 2: Take Trail A Test", required=False)
 
     def clean(self):
         cleaned_data = super().clean()

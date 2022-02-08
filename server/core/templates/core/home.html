@@ -10,9 +10,10 @@
 {% block content %}
 <form class="form-jobs" enctype='multipart/form-data' action={% url "index" %} method='post'>
 {% csrf_token %}
-<h1 align="center">Job submission</h1>
+<h1 align="center">Assessment Job Submission</h1>
 <hr>
-<h4 align="center">Enter information to start prediction</h4>
+<h4 align="center">Please fill in as many fields as possible for more accurate prediction result.</h4>
+<p class="text-center"><i>We do NOT collect any personal identifiers. All data collected will ONLY be used for academic purpose.</i></p>
 <br>
 
 {# job name #}
@@ -584,8 +585,9 @@
 <!--                    the numbers,-->
 <!--                    and set the hands showing 10 minutes past 11 o’clock.</p>-->
 <!--                <a style="font-weight: bold; text-align: justify">Step 1: </a>-->
-                <button type="submit" onclick="window.open('https://drive.google.com/file/d/1wPj1rnYcz-pWBfLbHXLFDTbKfSqYJwMf/view')">Take Clock Drawing Test</button>
-                <input id="id_img" name="img" required type="file">
+                <p class="text-left">Please click on this <button type="button" onclick="window.open('https://drive.google.com/file/d/1wPj1rnYcz-pWBfLbHXLFDTbKfSqYJwMf/view')">Start Taking Clock Drawing Test</button>
+                    button to get the instructions and complete the test independently.</p>
+                <p class="text-left"> Then submit a picture of your drawing here: <input style="display: inline" id="id_img" name="img" required type="file"></p>
                 {% if form.img.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
@@ -593,13 +595,15 @@
                 <br>
 <!--                <a style="font-weight: bold; text-align: justify">Step 2: </a>-->
                 <span style="color: red; font-weight: bolder">*</span>
-                <label for="id_img" style="font-weight: bold; text-align: justify">{{ form.img_trail.label }}</label>
-                <button type="submit" onclick="window.open('https://drive.google.com/file/d/1BCmzZ6r3wZgFAF97c9GdAtYnprF9B0YM/view')">Take Trail Test</button>
-                <input id="id_img_trail" name="img_trail" required type="file">
-<!--                {% if form.img_trail.errors %}-->
-<!--                <span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
-<!--                {% endif %}-->
-<!--                <p align="center" class="_help-text">{{ form.img_trail.help_text }}</p>-->
+                <label for="id_img" style="font-weight: bold">{{ form.img_trail.label }}</label>
+                <p class="text-left">Please click on the <button  type="button" onclick="window.open('https://drive.google.com/file/d/1BCmzZ6r3wZgFAF97c9GdAtYnprF9B0YM/view')">Start Taking Trail Test</button>
+                button, print out the instructions and follow them to complete the test.</p>
+                <p class="text-left">After you have completed the test, please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" required type="file">
+                </p>
+                {% if form.img_trail.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+                <p align="center" class="_help-text">{{ form.img_trail.help_text }}</p>
             </div>
         </div>
     </div>
@@ -619,7 +623,7 @@
         <div style="display: flex; justify-content: flex-start">
             <input id="id_agreedatastorage" required type="checkbox">
             <label for='id_agreedatastorage' style="font-weight: normal; line-height: 20px; margin-left: 1em">
-                I acknowledge that I have read the information in this consent form including risks and possible benefits. I have been given the chance to ask questions by either contacting the lead investigator or the Boston University IRB. My questions (if any) have been answered to my satisfaction, and I agree to participate in the study.
+                I acknowledge that I have read the information in this <a href="">consent form</a> including risks and possible benefits. I have been given the chance to ask questions by either contacting the lead investigator or the Boston University IRB. My questions (if any) have been answered to my satisfaction, and I agree to participate in the study.
             </label>
         </div>
     </div>
@@ -627,7 +631,7 @@
 
 {# Submit button #}
 <div class="form-group jobs-submit text-center">
-    <button class="btn btn-primary btn-md" id="submit_button" name="action" type="submit" value="submit">Submit job
+    <button class="btn btn-primary btn-md" id="submit_button" name="action" type="submit" value="submit">Start Prediction
     </button>
 </div>
 
