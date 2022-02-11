@@ -587,7 +587,7 @@
 <!--                <a style="font-weight: bold; text-align: justify">Step 1: </a>-->
                 <p class="text-left">Please click on this <button type="button" onclick="window.open('server/core/templates/assets/clock_drawing.pdf')">Start Taking Clock Drawing Test</button>
                     button to get the instructions and complete the test independently.</p>
-                <p class="text-left"> Then submit a picture of your drawing here: <input style="display: inline" id="id_img" name="img" required type="file"></p>
+                <p class="text-left"> Then submit a picture of your drawing here: <input style="display: inline" id="id_img" name="img" required type="file" accept="image/png, image/jpeg"></p>
                 {% if form.img.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
@@ -598,7 +598,7 @@
                 <label for="id_img" style="font-weight: bold">{{ form.img_trail.label }}</label>
                 <p class="text-left">Please click on the <button  type="button" onclick="window.open('server/core/templates/assets/trailA.pdf')">Start Taking Trail Test</button>
                 button, print out the instructions and follow them to complete the test.</p>
-                <p class="text-left">After you have completed the test, please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file">
+                <p class="text-left">After you have completed the test, please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
                 </p>
                 {% if form.img_trail.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>

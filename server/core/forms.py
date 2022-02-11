@@ -15,7 +15,7 @@ def validate(input):
 
 
 class JobSubmitForm(forms.Form):
-    job_name = forms.CharField(label='Job name',
+    job_name = forms.CharField(label='Job name (Please enter a unique identifier for this submission and do not include any personal information)',
                                required=False)
 
     age = forms.IntegerField(label='Age',
@@ -30,7 +30,7 @@ class JobSubmitForm(forms.Form):
     sex = forms.ChoiceField(widget=forms.Select, choices=SEX_CHOICES,
                             label='Gender', required=False)
 
-    height = forms.CharField(label='Height (ft/inches)',
+    height = forms.CharField(label='Height (ft/in)',
                              help_text='Enter your height, e.g. 5\'5\'\'', required=False)
 
     weight = forms.FloatField(label='Weight (pounds)',
@@ -138,7 +138,7 @@ class JobSubmitForm(forms.Form):
         ('4', '4 or more times each week')
     )
     exercise_frequency = forms.ChoiceField(widget=forms.Select, choices=EXE_CHOICES,
-                                           label='How often do you exercise or walk'
+                                           label='How often do you exercise or walk '
                                                  'for more than 10 minutes (without stopping)?', required=False)
     ALC_CHOICES = (
         ('0', 'N/A'),
