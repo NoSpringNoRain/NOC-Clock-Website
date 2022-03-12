@@ -13,6 +13,10 @@
             Queue
         {% endif %}
     </h2>
+    {% if request.resolver_match.url_name == "results" %}
+    <hr>
+    <h4 align="center">Please refresh in approximately one minute, click on your job ID to view the result.</h4>
+    {% endif %}
     <br>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">  {# TODO: Fix the layout for small screens, in admin mode it doesn't fit #}

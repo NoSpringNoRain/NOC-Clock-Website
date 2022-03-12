@@ -57,7 +57,7 @@ def index(request):
                 # start job
                 job.save()
                 job.make_dir_and_start()
-                return redirect('queue')
+                return redirect('results')
 
     context = {'errors': errors,
                'form': form}
@@ -73,7 +73,7 @@ def restart_job(request):
     errors = job.start()
 
     if not errors:
-        return redirect('queue')
+        return redirect('results')
 
     return HttpResponse('<h1>' + errors[0] + '</h1>')
 
@@ -86,7 +86,7 @@ def cancel_job(request):
     errors = job.cancel()
 
     if not errors:
-        return redirect('queue')
+        return redirect('results')
 
     return HttpResponse('<h1>' + errors[0] + '</h1>')
 

@@ -159,7 +159,7 @@ class JobSubmitForm(forms.Form):
         ('5', 'More than 20 years')
     )
     smoking_year = forms.ChoiceField(widget=forms.Select, choices=CIG_CHOICES,
-                                     label='How long have you been smoking cigarette or pipes'
+                                     label='How long have you been smoking cigarette or pipes '
                                            'during your entire life?', required=False)
 
     RECALL_CHOICES = (
