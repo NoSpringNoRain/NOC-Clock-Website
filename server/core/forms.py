@@ -30,8 +30,10 @@ class JobSubmitForm(forms.Form):
     sex = forms.ChoiceField(widget=forms.Select, choices=SEX_CHOICES,
                             label='Gender', required=False)
 
-    height = forms.CharField(label='Height (ft/in)',
+    height_ft = forms.IntegerField(label='Height (ft\'in\'\')',
                              help_text='Enter your height, e.g. 5\'5\'\'', required=False)
+
+    height_in = forms.IntegerField(required=False)
 
     weight = forms.FloatField(label='Weight (pounds)',
                               help_text='Enter your weight in pounds, e.g. 140.5', required=False)
@@ -184,6 +186,10 @@ class JobSubmitForm(forms.Form):
     img = forms.ImageField(label="Step 1: Take Clock Drawing Test", required=True)
 
     img_trail = forms.ImageField(label="Step 2: Take Trail A Test", required=False)
+
+    trail_min = forms.IntegerField(required=False)
+
+    trail_sec = forms.IntergerField(required=False)
 
     def clean(self):
         cleaned_data = super().clean()

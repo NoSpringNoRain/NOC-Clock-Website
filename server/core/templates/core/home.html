@@ -43,13 +43,13 @@
         <div style="display: flex; justify-content: center; align-items: center">
             <div class="form-group {% if form.age.errors %}has-error has-feedback{% endif %}"
                  style="text-align: center;">
-                <span style="color: red; font-weight: bolder">*</span>
+                <span style="color: red; font-weight: bolder;">*</span>
                 <label for="id_age" style="font-weight: bold;">{{ form.age.label }}</label>
                 <input class="form-control center-text"
                        id="id_age"
                        max="160" maxlength="100"
                        min="0" name="age" placeholder="Enter your age" required
-                       style="margin:auto; height:40px; width:330px" type="number">
+                       style="margin:auto; height:40px; width: 330px" type="number">
                 {% if form.age.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
@@ -65,7 +65,7 @@
                 <label for="id_sex" style="font-weight: bold;">{{ form.sex.label }}</label>
                 <select class="form-control center-text"
                         id="id_sex"
-                        name="sex" style="margin:auto; height:40px; width:330px">
+                        name="sex" style="margin:auto; height:40px; width: 330px">
                     <option value="0">Select your gender</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
@@ -88,15 +88,23 @@
         <div style="display: flex; justify-content: center; align-items: center">
             <div class="form-group {% if form.height.errors %}has-error has-feedback{% endif %}"
                  style="text-align: center;">
-                <label for="id_height" style="font-weight: bold;">{{ form.height.label }}</label>
+                <label for="id_height" style="font-weight: bold;">{{ form.height_in.label }}</label>
+            <div style="display: flex; justify-content: center; align-items: center">
                 <input class="form-control center-text"
-                       id="id_height"
+                       id="id_height_ft"
                        maxlength="8"
-                       name="height" style="margin:auto; height:40px; width: 330px" type="text">
-                {% if form.height.errors %}
+                       name="height_ft" style="margin:auto; height:40px; width: 40%" type="number">
+                <p style="font-weight: bold">ft</p>
+                <input class="form-control center-text"
+                       id="id_height_ft"
+                       maxlength="8"
+                       name="height_in" style="margin: auto; height:40px; width: 40%" type="number">
+                <p style="font-weight: bold">inches</p>
+            </div>
+                {% if form.height_ft.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
-                <p align="center" class="_help-text">{{ form.height.help_text }}</p>
+                <p align="center" class="_help-text">{{ form.height_ft.help_text }}</p>
             </div>
         </div>
     </div>
@@ -598,7 +606,10 @@
                 <label for="id_img" style="font-weight: bold">{{ form.img_trail.label }}</label>
                 <p class="text-left">Please click on the <button  type="button" onclick="window.open('server/core/templates/assets/TrailA_revised.pdf')">Start Taking Trail Test</button>
                 button, print out the instructions and follow them to complete the test.</p>
-                <p class="text-left">After you have completed the test, please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
+                <p class="text-left">How long did it take you to complete the test?
+                    <input id="id_trail_min" maxlength="8" name="trail_min" style="margin:auto; height:30px; width: 15%" type="number">minutes
+                    <input id="id_trail_min" maxlength="8" name="trail_sec" style="margin:auto; height:30px; width: 15%" type="number">seconds</p>
+                <p class="text-left">Please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
                 </p>
                 {% if form.img_trail.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
