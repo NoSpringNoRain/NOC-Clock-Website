@@ -189,7 +189,7 @@ class JobSubmitForm(forms.Form):
 
     trail_min = forms.IntegerField(required=False)
 
-    trail_sec = forms.IntergerField(required=False)
+    trail_sec = forms.IntegerField(required=False)
 
     def clean(self):
         cleaned_data = super().clean()

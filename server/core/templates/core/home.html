@@ -88,7 +88,7 @@
         <div style="display: flex; justify-content: center; align-items: center">
             <div class="form-group {% if form.height.errors %}has-error has-feedback{% endif %}"
                  style="text-align: center;">
-                <label for="id_height" style="font-weight: bold;">{{ form.height_in.label }}</label>
+                <label for="id_height_in" style="font-weight: bold;">{{ form.height_in.label }}</label>
             <div style="display: flex; justify-content: center; align-items: center">
                 <input class="form-control center-text"
                        id="id_height_ft"
@@ -96,7 +96,7 @@
                        name="height_ft" style="margin:auto; height:40px; width: 40%" type="number">
                 <p style="font-weight: bold">ft</p>
                 <input class="form-control center-text"
-                       id="id_height_ft"
+                       id="id_height_in"
                        maxlength="8"
                        name="height_in" style="margin: auto; height:40px; width: 40%" type="number">
                 <p style="font-weight: bold">inches</p>
@@ -608,7 +608,7 @@
                 button, print out the instructions and follow them to complete the test.</p>
                 <p class="text-left">How long did it take you to complete the test?
                     <input id="id_trail_min" maxlength="8" name="trail_min" style="margin:auto; height:30px; width: 15%" type="number">minutes
-                    <input id="id_trail_min" maxlength="8" name="trail_sec" style="margin:auto; height:30px; width: 15%" type="number">seconds</p>
+                    <input id="id_trail_sec" maxlength="8" name="trail_sec" style="margin:auto; height:30px; width: 15%" type="number">seconds</p>
                 <p class="text-left">Please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
                 </p>
                 {% if form.img_trail.errors %}
