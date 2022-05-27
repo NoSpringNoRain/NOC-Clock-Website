@@ -13,7 +13,7 @@ Read section "Running jobs" for the details.
     
 You should then use the `local-docker-compose` script as a drop in replacement 
 for docker-compose. For example, to start the server you can 
-run `local-docker-compose up --build`.
+run `sudo ./local-docker-compose up --build`.
 
 Cleaning up after docker for a clean rebuild:     
 1. `./cluspro-docker-compose rm` will remove the containers       
