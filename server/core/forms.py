@@ -15,7 +15,7 @@ def validate(input):
 
 
 class JobSubmitForm(forms.Form):
-    job_name = forms.CharField(label='Job name (Please enter a unique identifier for this submission and do not include any personal information)',
+    job_name = forms.CharField(label='Job name (Please enter a unique identifier for this submission and do not include any personal information; note the job name because it will be needed to retrieve the results)',
                                required=False)
 
     age = forms.IntegerField(label='Age',

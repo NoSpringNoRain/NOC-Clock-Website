@@ -9,7 +9,7 @@
     <h2 align="center">
         {% if request.resolver_match.url_name == "results" %}
             Results
-        {% elif request.resolver_match.url_name == "queue" %}
+        {% elif request.resolver_match.url_namejob_name == "queue" %}
             Queue
         {% endif %}
     </h2>
@@ -33,7 +33,7 @@
                                 {% if order_by == 'job_name' %}
                                     border-bottom-width: 3px; border-bottom-color: #51ad4c;
                                 {% endif %}">
-                            <a style="display: block; padding: 5px; color: black"href="{{ request.path }}?order_by=job_name">Name</a>
+                            <a style="display: block; padding: 5px; color: black"href="{{ request.path }}?order_by=job_name">Job name</a>
                         </th>
                         <th style="text-align: center; padding: 0; justify-content: center;
                                 {% if order_by == 'user__username' %}
