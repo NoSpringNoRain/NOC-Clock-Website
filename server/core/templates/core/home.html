@@ -595,7 +595,7 @@
 <!--                <a style="font-weight: bold; text-align: justify">Step 1: </a>-->
                 <p class="text-left">Please click on the <button type="button" onclick="window.open('server/core/templates/assets/clock_drawing.pdf')">Start Taking Clock Drawing Test</button>
                     button to get the instructions and complete the test independently.</p>
-                <p class="text-left"> Then submit a picture of your drawing here: <input style="display: inline" id="id_img" name="img" required type="file" accept="image/png, image/jpeg"></p>
+                <p class="text-left"> Then submit a picture of your drawing here (Accepted file formats are PNG and JPEG.): <input style="display: inline" id="id_img" name="img" required type="file" accept="image/png, image/jpeg"></p>
                 {% if form.img.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 {% endif %}
@@ -609,7 +609,7 @@
                 <p class="text-left">How long did it take you to complete the test?
                     <input id="id_trail_min" maxlength="8" name="trail_min" style="margin:auto; height:30px; width: 15%" type="number">minutes
                     <input id="id_trail_sec" maxlength="8" name="trail_sec" style="margin:auto; height:30px; width: 15%" type="number">seconds</p>
-                <p class="text-left">Please submit a picture of your test result here: <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
+                <p class="text-left">Please submit a picture of your test result here (Accepted file formats are PNG and JPEG.): <input style="display: inline" id="id_img_trail" name="img_trail" type="file" accept="image/png, image/jpeg">
                 </p>
                 {% if form.img_trail.errors %}
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -642,7 +642,7 @@
 
 {# Submit button #}
 <div class="form-group jobs-submit text-center">
-    <button class="btn btn-primary btn-md" id="submit_button" name="action" type="submit" value="submit">Start Prediction
+    <button class="btn btn-primary btn-md" id="submit_button" name="action" type="submit" value="submit">Submit
     </button>
 </div>
 
@@ -657,7 +657,7 @@
 <div style="display: flex; justify-content: center">
     <div class="form-group" style="margin: 0 auto; width: fit-content; width: -moz-fit-content">
         <div style="display: flex; justify-content: flex-start">
-            <p>Please <a href = "https://health-ai.bu.edu/results">click here to view your results</a>.</p>
+            <p>Once you click on <strong>Submit</strong> you will be redirected to the <a href = "https://health-ai.bu.edu/results">Results</a> page. Follow the instructions there to retrieve your result.</p>
         </div>
     </div>
 </div>
